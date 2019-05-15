@@ -1,8 +1,11 @@
-.head {
-    background-color: darkgray
+.image {
+    float: left;
+    cursor: pointer;
 }
 
-.image {
-    text-align: left;
-    float: left;
+.searchBar {
+    float: right;
+}
+.fill-space {
+    flex: 1 1 auto;
 }
