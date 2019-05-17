@@ -1,0 +1,9 @@
+mat-card {
+    width: 12%;
+    float:left;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.year {
+    text-align: left
+}
