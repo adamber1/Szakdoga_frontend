@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MovieComponent } from './pages/movie/movie.component';
@@ -10,6 +11,9 @@ import { MainpageComponent } from './pages/mainpage/mainpage.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { FilterpageComponent } from './pages/filterpage/filterpage.component';
 import { ProgrammepageComponent } from './pages/programmepage/programmepage.component';
+import { MoviepageComponent } from './pages/moviepage/moviepage.component';
+
+
 
 @NgModule({
   declarations: [
@@ -18,13 +22,15 @@ import { ProgrammepageComponent } from './pages/programmepage/programmepage.comp
     HeaderComponent,
     MainpageComponent,
     FilterpageComponent,
-    ProgrammepageComponent
+    ProgrammepageComponent,
+    MoviepageComponent
   ],
   imports: [
     BrowserModule,
     AppMaterialModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
