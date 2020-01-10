@@ -1,51 +1,53 @@
-<table style="width: 90%">
+<table style="width: 80%">
   <td>
     <h3 class="categories">Kategóriák:</h3>
   </td>
   <td>
     <tr>
-      <mat-checkbox color="primary">Vígjáték</mat-checkbox>
-    </tr>
-    <tr>
-      <mat-checkbox color="primary">Horror</mat-checkbox>
-    </tr>
-    <tr>
-      <mat-checkbox color="primary">Dráma</mat-checkbox>
-    </tr>
-    <tr>
-      <mat-checkbox color="primary">Thriller</mat-checkbox>
-    </tr>
-    <tr>
-      <mat-checkbox color="primary">Krimi</mat-checkbox>
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedCategory">
+          <mat-option 
+          *ngFor="let category of categories"
+          [value]="category">{{ category.megnevezes }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </tr>
   </td>
   <td>
-      <h3 class="categories">Év:</h3>
+      <h3 class="categories">Megjelenési év:</h3>
   </td>
   <td>
       <mat-form-field>
           <mat-label>Mettől</mat-label>
-          <mat-select>
+          <mat-select [(ngModel)]="selectedStartingYear">
+            <mat-option 
+            *ngFor="let year of years"
+            [value]="year">{{ year.number }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
   </td>
   <td>
       <mat-form-field>
           <mat-label>Meddig</mat-label>
-          <mat-select>
+          <mat-select [(ngModel)]="selectedEndingYear">
+              <mat-option 
+              *ngFor="let year of years"
+              [value]="year">{{ year.number }}
+              </mat-option>
           </mat-select>
         </mat-form-field>
   </td>
   <td>
-      <h3 class="categories">Nyelv:</h3>
-  </td>
-  <td>
-      <mat-form-field>
-          <mat-label>Válassz nyelvet!</mat-label>
-          <mat-select>
-          </mat-select>
-        </mat-form-field>
+    <button mat-raised-button (click)="filter()">Szűrés</button>
   </td>
 
 </table>
 <h2 class="categories">Szűrésnek megfelelő filmek:</h2>
+<app-movie *ngFor="let movie of filteredMovies"
+    [cim]="movie.cim"
+    [ev]="movie.ev"
+    [kepUrl]="movie.kep"
+    [routerLink]="['/moviepage', movie.id]">
+</app-movie>

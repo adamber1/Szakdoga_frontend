@@ -1,3 +1,20 @@
-<p>
-  moviepage works!
-</p>
+<table>
+  <tr>
+    <td>
+      <h1>{{ movie?.cim }}</h1>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding-left: 5px; width: 30%">
+      <img *ngIf="movie" style="width: 300px;" mat-card-image [src]="movie.kep"/>
+    </td>
+    <td style="text-align: justify; width: 60%; float: left;">
+      <h3>Műfaj: {{ movie?.mufaj.megnevezes }}</h3>
+      <h3>Megjelenési év: {{ movie?.ev }}  </h3>
+      <h3>Játékidő: {{ movie?.jatekIdo }} perc</h3>
+      <h3>Szereplők: {{ movie?.szereplok }}</h3>
+      <h3>Tartalom:</h3>
+      <p>{{ movie?.tartalom }}</p>
+    </td>
+  </tr>
+</table>

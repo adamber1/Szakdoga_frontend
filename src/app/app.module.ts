@@ -12,6 +12,12 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { FilterpageComponent } from './pages/filterpage/filterpage.component';
 import { ProgrammepageComponent } from './pages/programmepage/programmepage.component';
 import { MoviepageComponent } from './pages/moviepage/moviepage.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { AdminMovieComponent } from './admin/admin-movie/admin-movie.component';
+import { AdminProgrammeComponent } from './admin/admin-programme/admin-programme.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,14 +29,21 @@ import { MoviepageComponent } from './pages/moviepage/moviepage.component';
     MainpageComponent,
     FilterpageComponent,
     ProgrammepageComponent,
-    MoviepageComponent
+    MoviepageComponent,
+    ReservationComponent,
+    AdminMovieComponent,
+    AdminProgrammeComponent,
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppMaterialModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

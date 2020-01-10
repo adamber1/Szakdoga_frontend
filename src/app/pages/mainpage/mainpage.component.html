@@ -1,8 +1,10 @@
-<div>
-  <h2 class="new-movies">Legújabb filmeink:</h2>
+<div class="background">
+  <h2 class="new-movies">Legújabb filmjeink:</h2>
+  <mat-progress-spinner *ngIf="isLoading" mode="indeterminate"></mat-progress-spinner>
   <app-movie *ngFor="let movie of movies"
     [cim]="movie.cim"
     [ev]="movie.ev"
     [kepUrl]="movie.kep"
+    [routerLink]="['/moviepage', movie.id]"
   ></app-movie>
 </div>
