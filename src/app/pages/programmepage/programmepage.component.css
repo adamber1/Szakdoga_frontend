@@ -2,3 +2,17 @@
     float: left;
     margin-top: 5%;
 }
+
+table, td, th {  
+    border: 1px solid rgb(58, 40, 40);
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+th, td {
+    padding: 15px;
+}

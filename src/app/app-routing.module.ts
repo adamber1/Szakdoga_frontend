@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminMovieComponent } from './admin/admin-movie/admin-movie.component';
 import { AdminProgrammeComponent } from './admin/admin-programme/admin-programme.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/mainpage', pathMatch: 'full' },
@@ -20,6 +21,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'admin/movie', component: AdminMovieComponent },
   { path: 'admin/programme', component: AdminProgrammeComponent },
+  { path: 'reservation', component: ReservationComponent },
+  { path: 'reservation/:id', component: ReservationComponent },
   { path: '**', redirectTo: '/mainpage', pathMatch: 'full' }
 ]
 
