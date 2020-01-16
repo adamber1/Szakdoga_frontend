@@ -1,0 +1,29 @@
+<h4></h4>
+<form #f="ngForm" [formGroup]="movieForm" style="float: left;" (ngSubmit)="saveMovie()">
+  <mat-form-field>
+    <input matInput placeholder="Cím" formControlName="cim">
+  </mat-form-field>
+   <mat-form-field>
+      <input matInput placeholder="Szereplők" formControlName="szereplok">
+  </mat-form-field>
+  <mat-form-field>
+      <input matInput type="number" placeholder="Játékidő" formControlName="jatekido">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="mufaj" placeholder="Műfaj">
+      <mat-option *ngFor="let category of categories"
+      [value]="category">{{ category.megnevezes }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Tartalom" formControlName="tartalom"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="number" placeholder="Megjelenés éve" formControlName="ev">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="kep" placeholder="Kép url">
+  </mat-form-field>
+  <button mat-raised-button type="submit">Mentés</button>
+</form>

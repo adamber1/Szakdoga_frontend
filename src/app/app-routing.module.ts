@@ -10,6 +10,7 @@ import { AdminMovieComponent } from './admin/admin-movie/admin-movie.component';
 import { AdminProgrammeComponent } from './admin/admin-programme/admin-programme.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { MovieFormComponent } from './admin/movie-form/movie-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/mainpage', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'moviepage/:id', component: MoviepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'admin/movie', component: AdminMovieComponent },
+  { path: 'admin/movies', component: AdminMovieComponent },
+  { path: 'admin/movies/new', component: MovieFormComponent },
   { path: 'admin/programme', component: AdminProgrammeComponent },
   { path: 'reservation', component: ReservationComponent },
   { path: 'reservation/:id', component: ReservationComponent },

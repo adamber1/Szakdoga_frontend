@@ -18,6 +18,7 @@ import { AdminProgrammeComponent } from './admin/admin-programme/admin-programme
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MovieFormComponent } from './admin/movie-form/movie-form.component';
 
 
 
@@ -34,7 +35,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminMovieComponent,
     AdminProgrammeComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    MovieFormComponent
   ],
   imports: [
     BrowserModule,

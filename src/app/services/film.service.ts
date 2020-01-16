@@ -14,9 +14,19 @@ export class FilmService {
   
   private ALL_MOVIES_URL = `${this.BASE_URL}\\movies\\all`;
   private ALL_CATEGORIES_URL = `${this.BASE_URL}\\categories\\all`;
+  private ADD_MOVIE_URL = `${this.BASE_URL}\\movies\\addmovie`;
 
   constructor(private http: HttpClient) {
 
+  }
+
+  saveMovie(film: Film) {
+    let url = "http://localhost:8090/movies/addmovie";
+    this.http.post(url, film).subscribe(
+      response => {
+        console.log(response);
+      }
+    );
   }
 
   getAllMovies() : Observable<Film[]>{
@@ -38,5 +48,7 @@ export class FilmService {
       map(data => data.map(data => new Mufaj().deserialize(data)))
     );
   }
+
+
 
 }
