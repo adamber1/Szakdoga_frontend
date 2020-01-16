@@ -15,10 +15,10 @@ export class ReservationComponent implements OnInit {
   seatsToReserve = [];
   numOfSeats: number;
   takenSeats: number[] = [];
-  private vetites_id: string;
+  vetites_id: string;
   reservations: Foglalas[] = [];
-  private igazolvany_szam: number;
-  private show: Show;
+  igazolvany_szam: number;
+  show: Show;
 
 
   constructor(private route: ActivatedRoute, private service: ReservationService) { }
