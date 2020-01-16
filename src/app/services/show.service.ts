@@ -21,5 +21,23 @@ export class ShowService {
     );
   }
 
+  deleteShow(id: number) {
+    let url = `${this.BASE_URL}\\vetitesek\\delete\\${id}`;
+    this.http.delete(url).subscribe(
+      response => {
+        console.log(response);
+      }
+    );
+  }
+
+  saveShow(show: Show) {
+    let url = "http://localhost:8090/vetitesek/addvetites";
+    this.http.post(url, show).subscribe(
+      response => {
+        console.log(response);
+      }
+    );
+  }
+
 
 }

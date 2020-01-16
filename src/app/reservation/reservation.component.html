@@ -1,3 +1,29 @@
-<p>
-  reservation works!
-</p>
+<h3>Helyfoglalás</h3>
+<table>
+<tr>
+  <td>
+    <form #formcontrol="ngForm">
+      <mat-form-field>
+          <input name="ig_szam" type="number" [(ngModel)]='igazolvany_szam' matInput placeholder="Igazolvány szám" required ng-minlength="5">
+      </mat-form-field>
+    </form>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <h4 style="text-align: left; padding-top: 10px;">Kattints egy helyre a foglaláshoz:</h4>
+  </td>
+  <td>
+    <ng-container *ngFor="let seat of seats; let i=index">
+    <br *ngIf="i % 10 == 0">
+    <div class="space">
+      <mat-checkbox [disabled]="seat.taken" (change)="onClick(seat.id)"></mat-checkbox>
+    </div>
+    </ng-container>
+  </td>
+</tr>
+<tr>
+  <button (click)="buttonClick()" routerLink="/programmepage" [disabled]="!formcontrol.form.valid" style="float: left;" mat-raised-button>Foglal</button>
+</tr>
+</table>

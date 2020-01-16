@@ -1,5 +1,5 @@
-<h4></h4>
-<form #f="ngForm" [formGroup]="movieForm" style="float: left;" (ngSubmit)="saveMovie()">
+<h3>Új film hozzáadása</h3>
+<form [formGroup]="movieForm" (ngSubmit)="saveMovie()">
   <mat-form-field>
     <input matInput placeholder="Cím" formControlName="cim">
   </mat-form-field>
@@ -25,5 +25,7 @@
   <mat-form-field>
     <input matInput formControlName="kep" placeholder="Kép url">
   </mat-form-field>
-  <button mat-raised-button type="submit">Mentés</button>
+  <button mat-raised-button routerLink="/admin/movies">Vissza</button>
+  <div class="divider"></div>
+  <button mat-raised-button [disabled]="movieForm.invalid" type="submit">Mentés</button>
 </form>

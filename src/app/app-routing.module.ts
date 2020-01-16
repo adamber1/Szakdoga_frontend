@@ -11,6 +11,7 @@ import { AdminProgrammeComponent } from './admin/admin-programme/admin-programme
 import { ProfileComponent } from './profile/profile.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { MovieFormComponent } from './admin/movie-form/movie-form.component';
+import { ProgrammeFormComponent } from './admin/programme-form/programme-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/mainpage', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'admin/movies', component: AdminMovieComponent },
   { path: 'admin/movies/new', component: MovieFormComponent },
   { path: 'admin/programme', component: AdminProgrammeComponent },
+  { path: 'admin/programme/new', component: ProgrammeFormComponent },
   { path: 'reservation', component: ReservationComponent },
   { path: 'reservation/:id', component: ReservationComponent },
   { path: '**', redirectTo: '/mainpage', pathMatch: 'full' }

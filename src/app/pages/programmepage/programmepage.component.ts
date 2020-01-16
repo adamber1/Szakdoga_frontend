@@ -38,7 +38,6 @@ export class ProgrammepageComponent implements OnInit {
       }
 
       if (actualDate < currentDate) {
-        console.log(s.id + " vetitesre nem lehet foglalni mert mar vege!");
         this.disabledArray.push(s.id);
       }
 

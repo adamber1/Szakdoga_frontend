@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { FilmService } from 'src/app/services/film.service';
 import { Mufaj } from 'src/app/model/mufaj.model';
 import { Film } from 'src/app/model/film.model';
-import { VirtualTimeScheduler } from 'rxjs';
 
 @Component({
   selector: 'app-movie-form',
@@ -14,19 +13,18 @@ export class MovieFormComponent implements OnInit {
 
   movieForm: FormGroup;
   categories: Mufaj[] = [];
-  movie: Film;
 
   constructor(private fb: FormBuilder, private service: FilmService) { }
 
   ngOnInit() {
     this.movieForm = this.fb.group({
-      cim: '',
-      szereplok: '',
-      jatekido: '',
-      mufaj: '',
-      tartalom: '',
-      ev: '',
-      kep: ''
+      cim: ['', Validators.required],
+      szereplok: ['', Validators.required],
+      jatekido: ['', Validators.required],
+      mufaj: ['', Validators.required],
+      tartalom: ['', Validators.required],
+      ev: ['', Validators.required],
+      kep: ['', Validators.required]
     });
 
     this.service.getAllCategories().subscribe(
@@ -35,13 +33,13 @@ export class MovieFormComponent implements OnInit {
       },
       err => {
         alert("An error occured while trying to get all categories from the server!");
+        console.log(err);
       }
     );
   }
 
   saveMovie() {
     const result: Film = Object.assign({}, this.movieForm.value);
-    console.log(result);
     this.service.saveMovie(result);
   }
 

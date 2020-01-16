@@ -50,17 +50,12 @@ export class HeaderComponent implements OnInit {
 
   searchForMovie(search: string){
 
-    console.log("KERESES " , search);
-
     for (let m of this.movies) {
         if (m.cim === search) {
           this.redirect = m.id;
           break;
         }
     }
-
-    console.log(this.redirect);
-
     let url = 'moviepage/' + this.redirect;
 
     this.router.navigate([url]);

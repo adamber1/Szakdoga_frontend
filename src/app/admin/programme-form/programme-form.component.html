@@ -1,0 +1,37 @@
+<h3>Új vetítés hozzáadása</h3>
+<form [formGroup]="showForm" (ngSubmit)="saveShow()">
+  <mat-form-field>
+    <mat-select formControlName="film" placeholder="Film">
+      <mat-option *ngFor="let movie of movies"
+      [value]="movie">{{ movie.cim }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Időpont" formControlName="idopont">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="nyelv" placeholder="Nyelv">
+      <mat-option *ngFor="let l of languages"
+      [value]="l.lang">{{ l.lang }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="tipus" placeholder="Típus">
+      <mat-option *ngFor="let t of types"
+      [value]="t.type">{{ t.type }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="terem" placeholder="Terem">
+      <mat-option *ngFor="let room of rooms"
+      [value]="room">{{ room.id }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button routerLink="/admin/programme">Vissza</button>
+  <div class="divider"></div>
+  <button mat-raised-button [disabled]="showForm.invalid" type="submit">Mentés</button>
+</form>

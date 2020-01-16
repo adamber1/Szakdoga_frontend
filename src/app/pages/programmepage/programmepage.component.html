@@ -17,6 +17,7 @@
             <th>Vetítés időpontja</th>
             <th>Típus</th>
             <th>Nyelv</th>
+            <th>Terem</th>
             <th></th>
         </tr>
     </thead>
@@ -26,6 +27,7 @@
             <td>{{ s.idopont }}</td>
             <td>{{ s.tipus }}</td>
             <td>{{ s.nyelv }}</td>
+            <td>{{ s.terem.id }}</td>
             <td><button [routerLink]="['/reservation', s.id]" [disabled]="disabledArray.includes(s.id) ? true : false" mat-button>Helyfoglalás</button></td>
         </tr>
     </tbody>

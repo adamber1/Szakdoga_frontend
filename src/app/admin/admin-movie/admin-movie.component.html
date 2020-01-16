@@ -1,2 +1,28 @@
-<h4></h4>
-<button routerLink="/admin/movies/new" style="float: left;" mat-raised-button>Új film hozzáadása</button>
+<h3>Filmek kezelése</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Film Címe</th>
+            <th>Szereplők</th>
+            <th>Játékidő</th>
+            <th>Műfaj</th>
+            <th>Tartalom</th>
+            <th>Megjelenés éve</th>
+            <th>Kép URL</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let m of movies">
+            <td>{{ m.cim }}</td>
+            <td>{{ m.szereplok }}</td>
+            <td>{{ m.jatekido }}</td>
+            <td>{{ m.mufaj.megnevezes }}</td>
+            <td>{{ m.tartalom }}</td>
+            <td>{{ m.ev }}</td>
+            <td>{{ m.kep }}</td>
+            <td><button (click)="deleteMovie(m.id)" mat-button>Törlés</button></td>
+        </tr>
+    </tbody>
+</table>
+<button routerLink="/admin/movies/new" mat-raised-button>Új film hozzáadása</button>
