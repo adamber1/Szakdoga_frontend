@@ -9,7 +9,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class ReservationService {
 
-  private BASE_URL = "http://localhost:8090/";
+  private BASE_URL = "https://blooming-wildwood-43065.herokuapp.com/";
   private ALL_RESERVATIONS_URL = `${this.BASE_URL}\\reservations\\all`;
 
   constructor(private http: HttpClient) { }
@@ -29,7 +29,7 @@ export class ReservationService {
   }
 
   makeReservation(reservation: Foglalas) {
-    let url = "http://localhost:8090/reservations/addreservation";
+    let url = `${this.BASE_URL}\\reservations\\addreservation`;
     this.http.post(url, reservation).subscribe(
       response => {
         console.log(response);

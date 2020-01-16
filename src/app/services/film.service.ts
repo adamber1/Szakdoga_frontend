@@ -11,12 +11,11 @@ import { Room } from '../model/room.model';
 })
 export class FilmService {
 
-  private BASE_URL = "http://localhost:8090/";
+  private BASE_URL = "https://blooming-wildwood-43065.herokuapp.com/";
   
   private ALL_MOVIES_URL = `${this.BASE_URL}\\movies\\all`;
   private ALL_CATEGORIES_URL = `${this.BASE_URL}\\categories\\all`;
   private ALL_ROOMS_URL = `${this.BASE_URL}\\rooms\\all`;
-  private ADD_MOVIE_URL = `${this.BASE_URL}\\movies\\addmovie`;
 
   constructor(private http: HttpClient) {
 
@@ -32,7 +31,7 @@ export class FilmService {
   }
 
   saveMovie(film: Film) {
-    let url = "http://localhost:8090/movies/addmovie";
+    let url = `${this.BASE_URL}\\movies\\addmovie\\`;
     this.http.post(url, film).subscribe(
       response => {
         console.log(response);

@@ -8,8 +8,7 @@ import { map, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ShowService {
-
-  private BASE_URL = "http://localhost:8090/";
+  private BASE_URL = "https://blooming-wildwood-43065.herokuapp.com/";
 
   private ALL_SHOWS_URL = `${this.BASE_URL}\\vetitesek\\all`;
 
@@ -31,7 +30,7 @@ export class ShowService {
   }
 
   saveShow(show: Show) {
-    let url = "http://localhost:8090/vetitesek/addvetites";
+    let url = `${this.BASE_URL}\\vetitesek\\addvetites`;
     this.http.post(url, show).subscribe(
       response => {
         console.log(response);
