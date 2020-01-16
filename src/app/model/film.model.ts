@@ -6,7 +6,7 @@ export class Film implements Deserializable{
     id: number;
     cim: string;
     szereplok: string;
-    jatekIdo: number;
+    jatekido: number;
     mufaj: Mufaj;
     tartalom: string;
     ev: number;
