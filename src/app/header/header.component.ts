@@ -17,14 +17,11 @@ export class HeaderComponent implements OnInit {
   movies: Film[] = [];
   redirect: number;
 
-  isLoggedIn = this.authService.isLoggedIn();
-  isAdmin = this.authService.isAdmin();
-
   myControl = new FormControl();
   options: string[] = [];
   filteredOptions: Observable<string[]>;
 
-  constructor(private filmService: FilmService, private authService: AuthService, private router: Router) { }
+  constructor(private filmService: FilmService, public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.filmService.getAllMovies().subscribe(

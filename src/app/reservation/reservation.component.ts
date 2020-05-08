@@ -84,6 +84,7 @@ export class ReservationComponent implements OnInit {
   }
 
   populateSeatsArray() {
+    console.log("populating seats array");
     for (let i = 0; i < this.numOfSeats; i++){
       this.seats[i] = { id: i+1, taken : false};
     }
@@ -93,6 +94,13 @@ export class ReservationComponent implements OnInit {
           this.seats[s.id-1].taken = true;
         }
       }
+    }
+    if (this.seats.length === 0) {
+      console.log("seats array is empty :(");
+    }
+    console.log("seats array: ");
+    for (let s of this.seats) {
+      console.log(JSON.stringify(s));
     }
   }
 
