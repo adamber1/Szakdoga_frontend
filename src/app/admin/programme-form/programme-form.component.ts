@@ -16,6 +16,7 @@ export class ProgrammeFormComponent implements OnInit {
   showForm: FormGroup;
   rooms: Room[] = [];
   movies: Film[] = [];
+  invalidIdopont = false;
 
   languages = [
     { id: 1, lang: "Magyar"},
@@ -53,9 +54,18 @@ export class ProgrammeFormComponent implements OnInit {
 
   saveShow() {
     const result: Show = Object.assign({}, this.showForm.value);
-    console.log(result);
-    this.showService.saveShow(result);
-    this.showForm.reset();
+    let datum = new Date(result.idopont);
+    if (datum.getTime() !== datum.getTime()) {
+      console.log("invalid idopont!");
+      this.invalidIdopont = true;
+    }
+    else {
+      console.log(result);
+      this.showService.saveShow(result);
+      this.invalidIdopont = false;
+      this.showForm.reset();
+    }
+    
   }
 
 }

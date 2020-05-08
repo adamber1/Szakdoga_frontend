@@ -1,11 +1,17 @@
-mat-form-field{
+mat-form-field {
     width: 100%;
 }
-form{
+
+form {
     float: left;
 } 
-.divider{
+
+.divider {
     width:5px;
     height:auto;
     display:inline-block;
+}
+
+.error-message {
+    color: red;
 }

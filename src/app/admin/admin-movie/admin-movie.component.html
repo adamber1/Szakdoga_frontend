@@ -1,5 +1,5 @@
 <h3>Filmek kezelése</h3>
-<table>
+<table class="movies-table">
     <thead>
         <tr>
             <th>Film Címe</th>
@@ -14,14 +14,22 @@
     </thead>
     <tbody>
         <tr *ngFor="let m of movies">
-            <td>{{ m.cim }}</td>
-            <td>{{ m.szereplok }}</td>
-            <td>{{ m.jatekido }}</td>
-            <td>{{ m.mufaj.megnevezes }}</td>
-            <td>{{ m.tartalom }}</td>
-            <td>{{ m.ev }}</td>
-            <td>{{ m.kep }}</td>
-            <td><button (click)="deleteMovie(m.id)" mat-button>Törlés</button></td>
+                <td>{{ m.cim }}</td>
+                <td>
+                    <div class="limitedsize">
+                        {{ m.szereplok }}
+                    </div>
+                </td>
+                <td>{{ m.jatekido }} perc</td>
+                <td>{{ m.mufaj.megnevezes }}</td>
+                <td>
+                    <div class="limitedsize">
+                        {{ m.tartalom }}
+                    </div>
+                </td>
+                <td>{{ m.ev }}</td>
+                <td>{{ m.kep }}</td>
+                <td><button (click)="deleteMovie(m.id)" mat-button>Törlés</button></td>
         </tr>
     </tbody>
 </table>

@@ -12,7 +12,6 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = 'powderblue';
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#cfe8d8';
   }
-  title = 'Every Night Movie Night';
 }

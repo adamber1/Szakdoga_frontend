@@ -32,8 +32,7 @@ export class FilmService {
   }
 
   saveMovie(film: Film) {
-    let url = "http://localhost:8090/movies/addmovie";
-    this.http.post(url, film).subscribe(
+    this.http.post(this.ADD_MOVIE_URL, film).subscribe(
       response => {
         console.log(response);
       }

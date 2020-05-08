@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { ReservationService } from '../services/reservation.service';
 import { Foglalas } from '../model/foglalas.model';
 import { Show } from '../model/show.model';
+import { ShowService } from '../services/show.service';
+import { FilmService } from '../services/film.service';
+import { Film } from '../model/film.model';
 
 @Component({
   selector: 'app-reservation',
@@ -19,30 +22,38 @@ export class ReservationComponent implements OnInit {
   reservations: Foglalas[] = [];
   private igazolvany_szam: number;
   private show: Show;
+  canBeReserved: boolean = false;
+  movie: Film;
 
 
-  constructor(private route: ActivatedRoute, private service: ReservationService) { }
+  constructor(private route: ActivatedRoute, private reservationService: ReservationService, private showService: ShowService) { }
 
   ngOnInit() {
 
     this.route.paramMap.subscribe(params => {
       this.vetites_id = params.get('id');
-      this.service.getAllReservationsByVetites(this.vetites_id).subscribe(
+      this.showService.getShow(this.vetites_id).subscribe(
+        res => {
+          this.show = res;
+          this.movie = this.show.film;
+          this.numOfSeats = this.show.terem.helyek_szama;
+        }
+      );
+      this.reservationService.getAllReservationsByVetites(this.vetites_id).subscribe(
         res => {
           this.reservations = res;
-          console.log("Foglalt helyek betoltese");
-          for (let r of this.reservations){
-            this.takenSeats.push(r.hely_sorszama);
+          if (this.reservations.length !== 0) {
+            for (let r of this.reservations){
+              this.takenSeats.push(r.hely_sorszama);
+            }
           }
-          this.numOfSeats = this.reservations[0].vetites.terem.helyek_szama;
-          this.show = this.reservations[0].vetites;
           this.populateSeatsArray();
         }
       );
     });
   }
 
-  onClick(id: number) {
+  seatClick(id: number) {
     if(!this.seatsToReserve.includes(this.seats[id-1])) {
       this.seatsToReserve.push(this.seats[id-1]);
     }
@@ -53,9 +64,15 @@ export class ReservationComponent implements OnInit {
         }
       }      
     }
+    if(this.seatsToReserve.length === 0) {
+      this.canBeReserved = false;
+    }
+    else {
+      this.canBeReserved = true;
+    }
   }
 
-  buttonClick() {
+  reserve() {
     for (let s of this.seatsToReserve){
       let foglalas = new Foglalas();
       foglalas.hely_sorszama = s.id;
@@ -63,7 +80,7 @@ export class ReservationComponent implements OnInit {
       foglalas.id = null;
       foglalas.vetites = this.show;
 
-      this.service.makeReservation(foglalas);
+      this.reservationService.makeReservation(foglalas);
     }
   }
 
