@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShowService } from 'src/app/services/show.service';
 import { Show } from 'src/app/model/show.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-programmepage',
@@ -14,14 +15,12 @@ export class ProgrammepageComponent implements OnInit {
   filteredShows: Show[] = [];
   disabledArray: number[] = [];
 
-  constructor(private showService: ShowService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.showService.getAllShows().subscribe(
-      res => {
-        this.shows = res;
-      }
-    );
+
+    this.shows = this.route.snapshot.data['shows'];
+
   }
 
   showProgramme(event) {

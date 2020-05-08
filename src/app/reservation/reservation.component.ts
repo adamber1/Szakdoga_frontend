@@ -5,6 +5,7 @@ import { Foglalas } from '../model/foglalas.model';
 import { Show } from '../model/show.model';
 import { ShowService } from '../services/show.service';
 import { Film } from '../model/film.model';
+import { CDK_CONNECTED_OVERLAY_SCROLL_STRATEGY } from '@angular/cdk/overlay/typings/overlay-directives';
 
 @Component({
   selector: 'app-reservation',
@@ -25,31 +26,23 @@ export class ReservationComponent implements OnInit {
   movie: Film;
 
 
-  constructor(private route: ActivatedRoute, private reservationService: ReservationService, private showService: ShowService) { }
+  constructor(private route: ActivatedRoute, private reservationService: ReservationService) { }
 
   ngOnInit() {
 
-    this.route.paramMap.subscribe(params => {
-      this.vetites_id = params.get('id');
-      this.showService.getShow(this.vetites_id).subscribe(
-        res => {
-          this.show = res;
-          this.movie = this.show.film;
-          this.numOfSeats = this.show.terem.helyek_szama;
-        }
-      );
-      this.reservationService.getAllReservationsByVetites(this.vetites_id).subscribe(
-        res => {
-          this.reservations = res;
-          if (this.reservations.length !== 0) {
-            for (let r of this.reservations){
-              this.takenSeats.push(r.hely_sorszama);
-            }
-          }
-          this.populateSeatsArray();
-        }
-      );
-    });
+    this.show = this.route.snapshot.data['show'];
+    this.movie = this.show.film;
+    this.numOfSeats = this.show.terem.helyek_szama;
+
+    this.reservations = this.route.snapshot.data['reservations'];
+    if (this.reservations.length !== 0) {
+      for (let r of this.reservations){
+        this.takenSeats.push(r.hely_sorszama);
+      }
+    }
+
+    this.populateSeatsArray(this.numOfSeats, this.takenSeats);
+
   }
 
   seatClick(id: number) {
@@ -83,12 +76,12 @@ export class ReservationComponent implements OnInit {
     }
   }
 
-  populateSeatsArray() {
-    for (let i = 0; i < this.numOfSeats; i++){
-      this.seats[i] = { id: i+1, taken : false};
+  populateSeatsArray(numOfSeats, takenSeats) {
+    for (let i = 0; i < numOfSeats; i++){
+      this.seats[i] = { id: i+1, taken : false };
     }
     for (let s of this.seats) {
-      for (let t of this.takenSeats) {
+      for (let t of takenSeats) {
         if (s.id === t) {
           this.seats[s.id-1].taken = true;
         }
