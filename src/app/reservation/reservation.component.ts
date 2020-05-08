@@ -4,7 +4,6 @@ import { ReservationService } from '../services/reservation.service';
 import { Foglalas } from '../model/foglalas.model';
 import { Show } from '../model/show.model';
 import { ShowService } from '../services/show.service';
-import { FilmService } from '../services/film.service';
 import { Film } from '../model/film.model';
 
 @Component({
@@ -20,7 +19,7 @@ export class ReservationComponent implements OnInit {
   takenSeats: number[] = [];
   private vetites_id: string;
   reservations: Foglalas[] = [];
-  private igazolvany_szam: number;
+  private email: string;
   private show: Show;
   canBeReserved: boolean = false;
   movie: Film;
@@ -76,7 +75,7 @@ export class ReservationComponent implements OnInit {
     for (let s of this.seatsToReserve){
       let foglalas = new Foglalas();
       foglalas.hely_sorszama = s.id;
-      foglalas.igazolvany_szam = this.igazolvany_szam;
+      foglalas.email = this.email;
       foglalas.id = null;
       foglalas.vetites = this.show;
 

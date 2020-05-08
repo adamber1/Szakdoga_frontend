@@ -1,13 +1,13 @@
 <div class="grid">
     <div>
       <h3>Helyfoglalás</h3>
-      <p>Kérjük add meg az igazolványod okmány azonosítóját az utolsó 2 betű nélkül!</p>
+      <p>Kérjük add meg az email címed!</p>
       <table>
         <tr>
           <td>
             <form #formcontrol="ngForm">
               <mat-form-field>
-                  <input name="ig_szam" type="number" [(ngModel)]='igazolvany_szam' matInput placeholder="Igazolvány szám" pattern=".{6}" required>
+                  <input name="email" [(ngModel)]='email' matInput placeholder="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
               </mat-form-field>
             </form>
           </td>

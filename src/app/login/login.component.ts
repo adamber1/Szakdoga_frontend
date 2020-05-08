@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/authservice.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Credentials } from '../model/credentials.model';
 
@@ -11,7 +11,11 @@ import { Credentials } from '../model/credentials.model';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private fb: FormBuilder) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private fb: FormBuilder,
+    private route: ActivatedRoute) { }
 
   invalidLogin = false;
 
@@ -27,17 +31,20 @@ export class LoginComponent implements OnInit {
 
   signIn() {
     const credentials: Credentials = Object.assign({}, this.loginForm.value);
-    this.authService.login(credentials);
-    this.redirect();
+    this.authService.login(credentials).then(
+      res => {
+        if (res) {
+          let user = this.authService.currentUser;
+          let returnUrl;
+          if (user && user.admin) {
+            returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+          }
+          this.router.navigate([returnUrl || '/']);
+        }
+        else {
+          this.invalidLogin = true;
+        }
+      }
+    );
   }
-
-  redirect() {
-    if(this.authService.isLoggedIn()){
-      this.router.navigate(['/']);
-    }
-    else {
-      this.invalidLogin = true;
-    }
-  }
-
 }

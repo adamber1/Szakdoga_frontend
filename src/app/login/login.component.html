@@ -1,12 +1,15 @@
 <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+    <h1>Jelentkezz be!</h1>
     <div *ngIf="invalidLogin" class="error-message">Helytelen felhasználónév/jelszó</div>
     <mat-form-field>
-      <input matInput formControlName="name">
+      <input matInput placeholder="felhasználónév" formControlName="name">
     </mat-form-field>
+    <br>
      <mat-form-field>
-        <input matInput type="password" formControlName="password">
+        <input matInput placeholder="jelszó" type="password" formControlName="password">
     </mat-form-field>
-    <button mat-raised-button routerLink="/">Vissza</button>
+    <br>
+    <button mat-raised-button routerLink="/">Vissza</button>    
     <div class="divider"></div>
     <button mat-raised-button type="submit">Bejelentkezés</button>
 </form>

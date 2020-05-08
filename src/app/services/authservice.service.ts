@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../model/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   user: User;
 
@@ -16,21 +17,20 @@ export class AuthService {
   login(credentials) {
     let url = `${this.BASE_URL}\\users\\login`;
 
-    this.http.post(url, credentials).subscribe(
+    return this.http.post(url, credentials).toPromise().then(
       (res: User) => {
-        if (res && res.admin) {
-          localStorage.setItem('admin', 'true');
+        if (res) {
+          this.user = new User(res);
+          return true;
         }
-        else if (res) {
-          localStorage.setItem('admin', 'false');
+        else {
+          return false;
         }
-        let u = new User(res);
-        this.user = u;
       }
     );
   }
 
-  getLoggedInUser(): User {
+  get currentUser() {
     return this.user;
   }
 
@@ -49,7 +49,7 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('admin');
     this.user = null;
+    this.router.navigate(['/']);
   }
 }

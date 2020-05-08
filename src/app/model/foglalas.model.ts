@@ -5,7 +5,7 @@ export class Foglalas implements Deserializable{
 
     id: number;
     hely_sorszama: number;
-    igazolvany_szam: number;
+    email: string;
     vetites: Show;
 
     deserialize(input: any): this { 
