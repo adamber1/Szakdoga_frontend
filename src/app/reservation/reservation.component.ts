@@ -19,8 +19,8 @@ export class ReservationComponent implements OnInit {
   takenSeats: number[] = [];
   vetites_id: string;
   reservations: Foglalas[] = [];
-  private email: string;
-  private show: Show;
+  email: string;
+  show: Show;
   canBeReserved: boolean = false;
   movie: Film;
 
