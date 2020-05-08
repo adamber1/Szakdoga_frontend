@@ -12,7 +12,7 @@ export class AuthService {
 
   user: User;
 
-  private BASE_URL = "http://localhost:8090/";
+  private BASE_URL = "https://blooming-wildwood-43065.herokuapp.com/";
 
   login(credentials) {
     let url = `${this.BASE_URL}\\users\\login`;
