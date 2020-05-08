@@ -85,13 +85,6 @@ export class ReservationComponent implements OnInit {
         }
       }
     }
-    if (this.seats.length === 0) {
-      console.log("seats array is empty :(");
-    }
-    console.log("seats array: ");
-    for (let s of this.seats) {
-      console.log(JSON.stringify(s));
-    }
   }
 
 }
