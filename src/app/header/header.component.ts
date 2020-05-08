@@ -17,6 +17,9 @@ export class HeaderComponent implements OnInit {
   movies: Film[] = [];
   redirect: number;
 
+  isLoggedIn = this.authService.isLoggedIn();
+  isAdmin = this.authService.isAdmin();
+
   myControl = new FormControl();
   options: string[] = [];
   filteredOptions: Observable<string[]>;

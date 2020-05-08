@@ -2,10 +2,10 @@
 <mat-toolbar>
   <mat-toolbar-row>
     <img routerLink="/mainpage" class="image" src="assets/LOGO5.png">
-    <p *ngIf="authService?.isLoggedIn()"> Üdv {{authService.currentUser.nev}}!</p>
-    <button *ngIf="!authService?.isLoggedIn()" mat-button routerLink="/login">Bejelentkezés</button>
-    <button *ngIf="authService?.isLoggedIn()" mat-button (click)="authService.logout()">Kijelentkezés</button>
-    <button *ngIf="authService?.isAdmin()" mat-button [matMenuTriggerFor]="menu">Admin menü</button>
+    <p *ngIf="isLoggedIn"> Üdv {{authService.currentUser.nev}}!</p>
+    <button *ngIf="!isLoggedIn" mat-button routerLink="/login">Bejelentkezés</button>
+    <button *ngIf="isLoggedIn" mat-button (click)="authService.logout()">Kijelentkezés</button>
+    <button *ngIf="isAdmin" mat-button [matMenuTriggerFor]="menu">Admin menü</button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item routerLink="admin/movies">Filmek kezelése</button>
         <button mat-menu-item routerLink="admin/programme">Műsor kezelése</button>
