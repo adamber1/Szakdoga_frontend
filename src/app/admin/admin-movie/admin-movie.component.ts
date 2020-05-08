@@ -32,6 +32,4 @@ export class AdminMovieComponent implements OnInit {
     }
     this.service.deleteMovie(id);
   }
-
-
 }

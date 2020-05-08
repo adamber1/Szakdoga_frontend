@@ -6,3 +6,8 @@ h3 {
     text-align: left;
     padding-left: 5%;
 }
+
+.content {
+    margin: auto;
+    max-width: 1200px;
+}

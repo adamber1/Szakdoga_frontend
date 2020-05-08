@@ -8,7 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { AppMaterialModule } from './app.material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainpageComponent } from './pages/mainpage/mainpage.component';
-import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { FilterpageComponent } from './pages/filterpage/filterpage.component';
 import { ProgrammepageComponent } from './pages/programmepage/programmepage.component';
 import { MoviepageComponent } from './pages/moviepage/moviepage.component';
@@ -38,7 +38,7 @@ import { ProgrammeFormComponent } from './admin/programme-form/programme-form.co
     LoginComponent,
     ProfileComponent,
     MovieFormComponent,
-    ProgrammeFormComponent
+    ProgrammeFormComponent,
   ],
   imports: [
     BrowserModule,

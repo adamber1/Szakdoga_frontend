@@ -24,6 +24,7 @@ export class MainpageComponent implements OnInit {
     this.filmService.getAllMovies().subscribe(
       res => {
         this.movies = res;
+        this.movies.sort((a,b) => new Date(b.ev).getTime() - new Date(a.ev).getTime());
         this.isLoading = false;
       },
       err => {

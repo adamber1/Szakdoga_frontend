@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Show } from '../model/show.model';
 import { map, catchError } from 'rxjs/operators';
 
@@ -17,6 +17,14 @@ export class ShowService {
   getAllShows(): Observable<Show[]> {
     return this.http.get<Show[]>(this.ALL_SHOWS_URL).pipe(
       map(data => data.map(data => new Show().deserialize(data)))
+    );
+  }
+
+  getShow(id: string) : Observable<Show> {
+    let url = `${this.BASE_URL}\\vetitesek\\${id}`;
+    return this.http.get<Show>(url).pipe(
+      map(data => new Show().deserialize(data)),
+      catchError(() => throwError('Movie not found'))
     );
   }
 

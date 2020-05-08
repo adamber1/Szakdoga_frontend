@@ -12,6 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { MovieFormComponent } from './admin/movie-form/movie-form.component';
 import { ProgrammeFormComponent } from './admin/programme-form/programme-form.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/mainpage', pathMatch: 'full' },
@@ -21,10 +22,10 @@ const routes: Routes = [
   { path: 'moviepage/:id', component: MoviepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'admin/movies', component: AdminMovieComponent },
-  { path: 'admin/movies/new', component: MovieFormComponent },
-  { path: 'admin/programme', component: AdminProgrammeComponent },
-  { path: 'admin/programme/new', component: ProgrammeFormComponent },
+  { path: 'admin/movies', component: AdminMovieComponent, canActivate: [AuthGuard] },
+  { path: 'admin/movies/new', component: MovieFormComponent, canActivate: [AuthGuard] },
+  { path: 'admin/programme', component: AdminProgrammeComponent, canActivate: [AuthGuard] },
+  { path: 'admin/programme/new', component: ProgrammeFormComponent, canActivate: [AuthGuard] },
   { path: 'reservation', component: ReservationComponent },
   { path: 'reservation/:id', component: ReservationComponent },
   { path: '**', redirectTo: '/mainpage', pathMatch: 'full' }

@@ -5,6 +5,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/authservice.service';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
   options: string[] = [];
   filteredOptions: Observable<string[]>;
 
-  constructor(private filmService: FilmService, private router: Router) { }
+  constructor(private filmService: FilmService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.filmService.getAllMovies().subscribe(
@@ -30,10 +31,10 @@ export class HeaderComponent implements OnInit {
       }
     )
     this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
+    .pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
   }
 
   private _filter(value: string): string[] {
