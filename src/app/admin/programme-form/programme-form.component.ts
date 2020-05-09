@@ -56,11 +56,9 @@ export class ProgrammeFormComponent implements OnInit {
     const result: Show = Object.assign({}, this.showForm.value);
     let datum = new Date(result.idopont);
     if (datum.getTime() !== datum.getTime()) {
-      console.log("invalid idopont!");
       this.invalidIdopont = true;
     }
     else {
-      console.log(result);
       this.showService.saveShow(result);
       this.invalidIdopont = false;
       this.showForm.reset();

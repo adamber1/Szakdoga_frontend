@@ -30,20 +30,12 @@ export class ShowService {
 
   deleteShow(id: number) {
     let url = `${this.BASE_URL}\\vetitesek\\delete\\${id}`;
-    this.http.delete(url).subscribe(
-      response => {
-        console.log(response);
-      }
-    );
+    this.http.delete(url).subscribe();
   }
 
   saveShow(show: Show) {
     let url = `${this.BASE_URL}\\vetitesek\\addvetites`;
-    this.http.post(url, show).subscribe(
-      response => {
-        console.log(response);
-      }
-    );
+    this.http.post(url, show).subscribe();
   }
 
 

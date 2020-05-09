@@ -24,19 +24,11 @@ export class FilmService {
 
   deleteMovie(id: number) {
     let url = `${this.BASE_URL}\\movies\\delete\\${id}`;
-    this.http.delete(url).subscribe(
-      response => {
-        console.log(response);
-      }
-    );
+    this.http.delete(url).subscribe();
   }
 
   saveMovie(film: Film) {
-    this.http.post(this.ADD_MOVIE_URL, film).subscribe(
-      response => {
-        console.log(response);
-      }
-    );
+    this.http.post(this.ADD_MOVIE_URL, film).subscribe();
   }
 
   getAllMovies() : Observable<Film[]>{

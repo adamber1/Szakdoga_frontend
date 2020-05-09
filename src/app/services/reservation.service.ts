@@ -30,11 +30,7 @@ export class ReservationService {
 
   makeReservation(reservation: Foglalas) {
     let url = `${this.BASE_URL}\\reservations\\addreservation`;
-    this.http.post(url, reservation).subscribe(
-      response => {
-        console.log(response);
-      }
-    );
+    this.http.post(url, reservation).subscribe();
   }
 
 }
